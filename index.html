@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MDCA Calibration</title>
+    <meta name="author" content="Jatin Prakash">
+    <meta name="description"
+        content="Project page of A Stitch in Time Saves Nine:A Train-Time Regularizing Loss for Improved Neural Network Calibration">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="cvpr.png">
+    <!-- Format -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../format/app.css">
+    <link rel="stylesheet" href="../format/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="../format/app.js"></script>
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center" style="font-family: Times New Roman">
+                A Stitch in Time Saves Nine: A Train-Time Regularizing Loss for Improved Neural Network
+                Calibration<br />
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://www.linkedin.com/in/ramya-hebbalaguppe-620b272/">
+                            Ramya Hebbalaguppe*
+                        </a>
+
+                        <br /> IIT Delhi & TCS Research
+                    </li>
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/jatinprakash1511">
+                            Jatin Prakash*
+                        </a>
+
+                        <br /> IIT Delhi
+                    </li>
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/neelabh-madan/">
+                            Neelabh Madan*
+                        </a>
+
+                        <br /> IIT Delhi
+                    </li>
+                    <li>
+                        <a href="https://www.cse.iitd.ac.in/~chetan/">
+                            Chetan Arora
+                        </a>
+
+                        <br /> IIT Delhi
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-12 text-center">
+                Some more comments
+            </div>
+        </div> -->
+
+        <!-- ##### Elements #####-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/abs/2203.13834">
+                            <img src="paper_front.png" height="80px"><br>
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mdca-loss/MDCA-Calibration">
+                            <img src="github_icon.png" height="80px"><br>
+                            <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mdca-poster.pdf">
+                            <img src="poster-pic.png" height="80px"><br>
+                            <h4><strong>Poster</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table>
+                    <tr>
+                        <!-- <td><img src="mdca-poster.pdf" height="" width="720"  align="center"></td> -->
+                        <td><img src="abstract_pic.png" height="" width="720" align="center"></td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+        </div>
+
+
+        <!-- ##### Abstract #####-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Abstract
+                </h2>
+                <p style="font-family: Times New Roman" align="justify">
+                    Deep Neural Networks ( DNNs) are known to make overconfident mistakes, which makes their use
+                    problematic in safety-critical applications. State-of-the-art ( SOTA ) calibration techniques
+                    improve on the confidence of predicted labels alone and leave the confidence of non-max classes
+                    (e.g. top-2, top-5) uncalibrated. Such calibration is not suitable for label refinement using
+                    post-processing. Further, most SOTA techniques learn a few hyper-parameters post-hoc, leaving out
+                    the scope for image, or pixel specific calibration. This makes them unsuitable for calibration under
+                    domain shift, or for dense prediction tasks like semantic segmentation. In this paper, we argue for
+                    intervening at the train time itself, so as to directly produce calibrated DNN models. We propose a
+                    novel auxiliary loss function: Multi-class Difference in Confidence and Accuracy ( MDCA ), to
+                    achieve the same MDCA can be used in conjunction with other application/task-specific loss
+                    functions. We show that training with MDCA leads to better-calibrated models in terms of Expected
+                    Calibration Error ( ECE ), and Static Calibration Error ( SCE ) on image classification, and
+                    segmentation tasks. We report ECE ( SCE ) score of 0.72 (1.60) on the CIFAR 100 dataset, in
+                    comparison to 1.90 (1.71) by the SOTA. Under domain shift, a ResNet-18 model trained on PACS dataset
+                    using MDCA gives an average ECE ( SCE ) score of 19.7 (9.7) across all domains, compared to 24.2
+                    (11.8) by the SOTA. For the segmentation task, we report a 2X reduction in calibration error on
+                    PASCAL - VOC dataset in comparison to Focal Loss. Finally, MDCA training improves calibration even
+                    on imbalanced data, and for natural language classification tasks.
+                </p>
+            </div>
+        </div>
+
+
+        
+        
+        <br>
+        <br>
+        <!-- ##### Motivation & Key idea #####-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Understanding Calibration
+                </h2>
+
+                <table>
+                    <tr>
+                        <!-- <td><img src="mdca-poster.pdf" height="" width="720"  align="center"></td> -->
+                        <td><img src="understanding-calibration.png" height="" width="700" align="center"></td>
+                    </tr>
+
+
+                </table>
+                </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Proposed Solution: MDCA
+                </h2>
+
+                <table>
+                    <tr>
+                        <!-- <td><img src="mdca-poster.pdf" height="" width="720"  align="center"></td> -->
+                        <td><img src="proposed-method.png" height="" width="700" align="center"></td>
+                    </tr>
+
+
+                </table>
+                </div>
+            </div>
+            
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Highlights
+                </h2>
+                <h4 class="text-justify" style="font-family: Times New Roman">
+                    <ul>
+                        <li>
+                            <font color="red">
+                                [Novelty] 
+                            </font> We propose an auxiliary loss to overcome miscalibration
+                        </li>
+                        <li>
+                            <font color="red">
+                                [Multi-class Calibration] 
+                            </font> Entire probability vector (all K classes) taken into account
+                        </li>
+                        <li>
+                            <font color="red">
+                                [Powerful Regularizer] 
+                            </font> Models trained using our method are relatively well calibrated even under domain/dataset drift
+ 
+                        </li>
+                        <li>
+                            <font color="red">
+                                [Superior Calibration]
+                            </font>  Outperforms SOTA methods on various datasets and models
+                        </li>
+                        <li>
+                            <font color="red">
+                                [Beyond Image Classification] 
+                            </font> Promising results in semantic segmentation in images and NL classification tasks
+                        </li>
+                        
+                      </ul>
+                    </h4>
+            </div>
+        </div>
+
+
+
+       
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Files
+                </h2>
+                <li> Paper (with supplementary) (<a href="https://arxiv.org/pdf/2203.13834.pdf">pdf</a>) </li>
+                <!-- <li> Paper (with supplementary) (<a href="https://arxiv.org/pdf/2203.13834.pdf">pdf</a>) </li> -->
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    BibTeX
+                </h2>
+                <!-- <div class="form-group col-md-10 col-md-offset-1"> -->
+                    <!-- <textarea id="bibtex" class="form-control" height="1000px" readonly> -->
+                    <font size="-2">
+                        <tt>
+                        <textarea id="bibtex" class="form-control" rows="8" style="align-content:left"readonly>@InProceedings{Hebbalaguppe_2022_CVPR,&#13;&emsp;&emsp;&emsp;&emsp; author    = {Hebbalaguppe, Ramya and Prakash, Jatin and Madan, Neelabh and Arora, Chetan},&#13;&emsp;&emsp;&emsp;&emsp; title     = {A Stitch in Time Saves Nine: A Train-Time Regularizing Loss for Improved Neural Network Calibration},&#13;&emsp;&emsp;&emsp;&emsp; booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},&#13;&emsp;&emsp;&emsp;&emsp; month     = {June},&#13;&emsp;&emsp;&emsp;&emsp; year      = {2022},&#13;&emsp;&emsp;&emsp;&emsp; pages     = {16081-16090}&#13;}</textarea>
+                        </tt>
+                    </font>
+                <!-- </div> -->
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
